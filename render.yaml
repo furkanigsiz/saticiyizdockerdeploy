@@ -25,7 +25,7 @@ services:
     healthCheckPath: /health
     
   # Frontend servisi - Static Site olarak değiştirdik
-  - type: static-site
+  - type: static
     name: saticiyz-frontend
     buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
     publishDir: frontend/build
