@@ -33,6 +33,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 3000
       - key: REACT_APP_API_URL
         fromService:
           name: saticiyz-backend
@@ -41,9 +43,4 @@ services:
       - key: REACT_APP_SUPABASE_URL
         sync: false
       - key: REACT_APP_SUPABASE_KEY
-        sync: false
-      - key: API_URL
-        fromService:
-          name: saticiyz-backend
-          type: web
-          envVarKey: RENDER_EXTERNAL_URL 
+        sync: false 
