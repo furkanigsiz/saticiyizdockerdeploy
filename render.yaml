@@ -6,6 +6,7 @@ services:
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
     plan: free
+    region: frankfurt
     envVars:
       - key: NODE_ENV
         value: production
@@ -23,18 +24,15 @@ services:
         value: 7d
     healthCheckPath: /health
     
-  # Frontend servisi
-  - type: web
+  # Frontend servisi - Static Site olarak değiştirdik
+  - type: static-site
     name: saticiyz-frontend
-    env: docker
-    dockerfilePath: ./frontend/Dockerfile
-    dockerContext: ./frontend
-    plan: free
+    buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
+    publishDir: frontend/build
+    region: frankfurt
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
       - key: REACT_APP_API_URL
         value: https://saticiyz-backend.onrender.com
       - key: REACT_APP_SUPABASE_URL
