@@ -24,11 +24,12 @@ services:
         value: 7d
     healthCheckPath: /health
     
-  # Frontend servisi - Static Site olarak değiştirdik
-  - type: static
+  # Frontend servisi
+  - type: web
     name: saticiyz-frontend
+    env: static
     buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
-    publishDir: frontend/build
+    staticPublishPath: ./frontend/build
     region: frankfurt
     envVars:
       - key: NODE_ENV
