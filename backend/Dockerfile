@@ -16,7 +16,7 @@ ENV PORT=10000
 COPY package*.json ./
 
 # Bağımlılıkları yükle
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Uygulamayı kopyala
 COPY . .
