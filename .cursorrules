@@ -1,0 +1,117 @@
+# Saticiyiz Project Rules
+
+## Coding Standards
+
+### File Organization
+- Frontend components should be organized by feature in the `src/components` directory
+- Backend routes should be in `src/routes` with corresponding controllers in `src/controllers`
+- Reusable utility functions should be placed in `src/utils` directories
+- Environment variables should be documented in `.env.example` files
+
+### Naming Conventions
+- React components should use PascalCase (e.g., `ProductCard.js`)
+- JavaScript files for utilities should use camelCase (e.g., `apiService.js`)
+- CSS/SCSS files should match their component names (e.g., `ProductCard.css`)
+- Database tables use PascalCase with plural nouns (e.g., `Products`, `Orders`)
+
+### Code Style
+- Use ES6+ syntax and features
+- Prefer async/await over Promise chains
+- Use destructuring for props and state
+- Include JSDoc comments for complex functions
+- Maintain consistent indentation (2 spaces)
+
+## API Patterns
+
+### Endpoint Structure
+- RESTful endpoints follow `/api/resource` pattern
+- Resource identifiers in URLs, not query parameters
+- Use query parameters for filtering, sorting, and pagination
+- Version endpoints with `/api/v1/resource` format for future compatibility
+
+### Response Format
+- All API responses should follow consistent structure:
+```json
+{
+  "success": true/false,
+  "data": { ... },
+  "error": { "message": "Error message", "code": "ERROR_CODE" }
+}
+```
+
+## Database Patterns
+
+### Supabase Usage
+- Use Row Level Security (RLS) policies for all tables
+- Include created_at and updated_at timestamp fields on all tables
+- Foreign key relationships should be properly defined
+- Indexes for frequently queried fields
+
+## Frontend Patterns
+
+### Component Structure
+- Functional components with hooks preferred over class components
+- Props should be validated with PropTypes
+- Components should be relatively small and focused
+- Container/presentation pattern for complex components
+
+### State Management
+- Context API for application-wide state
+- useState for component-local state
+- useReducer for complex state logic
+- Custom hooks for reusable state logic
+
+## Testing Guidelines
+
+### Backend Tests
+- Unit tests for utility functions
+- Integration tests for API endpoints
+- Use Jest as testing framework
+
+### Frontend Tests
+- Component tests with React Testing Library
+- Snapshot tests for UI verification
+- Mock service workers for API testing
+
+## Git Workflow
+
+### Branch Naming
+- feature/feature-name for new features
+- fix/issue-description for bug fixes
+- refactor/component-name for code improvements
+- docs/description for documentation updates
+
+### Commit Messages
+- Begin with verb in present tense
+- Be descriptive but concise
+- Reference issue numbers when applicable
+
+## CI/CD Practices
+
+### Build Process
+- Docker containers should be rebuilt for each deployment
+- Environment-specific configurations should be injected at build time
+- Static code analysis should run on each build
+
+### Deployment
+- Staging environment should mirror production
+- Database migrations should be tested in staging before production
+- Feature flags for larger changes
+
+## Documentation
+
+### Code Comments
+- Comments explain why, not what (code should be self-explanatory)
+- TODOs should include issue reference or explanation
+- Complex algorithms should have detailed explanations
+
+### User Documentation
+- User guide should be maintained in Markdown
+- Screenshots should be updated with UI changes
+- Examples provided for common workflows 
+
+## Trendyol
+
+### Trendyol Api 
+
+- Trendyoldan api'lerinden sadece bilgi çekeceğiz asla apiler kullanarak mağazaya ürün ekleme silme vs gibi şeyler yapılmayacak.

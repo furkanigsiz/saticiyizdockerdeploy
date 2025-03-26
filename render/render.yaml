@@ -1,0 +1,49 @@
+services:
+  # Backend servisi
+  - type: web
+    name: saticiyz-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+    healthCheckPath: /health
+    
+  # Frontend servisi
+  - type: web
+    name: saticiyz-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: REACT_APP_API_URL
+        fromService:
+          name: saticiyz-backend
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: REACT_APP_SUPABASE_URL
+        sync: false
+      - key: REACT_APP_SUPABASE_KEY
+        sync: false
+      - key: API_URL
+        fromService:
+          name: saticiyz-backend
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL 

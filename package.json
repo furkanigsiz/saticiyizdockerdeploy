@@ -1,0 +1,14 @@
+{
+  "name": "saticiyiz",
+  "version": "1.0.0",
+  "description": "Trendyol satıcı yönetim sistemi",
+  "scripts": {
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "install-deps": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.1.1",
+    "concurrently": "^8.2.2"
+  }
+}
